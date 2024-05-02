@@ -42,7 +42,7 @@ const gettingFormData= asyncHandler(async(req, res)=>{
 const createPdf = asyncHandler(async(req, res)=>{
     const htmlContent = pdfTemplate(req.body);
 
-    pdf.create(htmlContent).toFile('pdf/form.pdf', (err) => {
+    pdf.create(htmlContent).toFile('./public/temp/form.pdf', (err) => {
         if(err){
             throw new ApiError(500, "Something Wrong while creating the PDF!!!")
         }
