@@ -11,7 +11,7 @@ const ContactManagement = () => {
 // Fetching Form Data from Database //
 useEffect(()=>{
     const fetching=(async()=>{
-        const formData= await axios.get('https://management-system-g7rv.onrender.com/api/v1/form/getForm');
+        const formData= await axios.get('http://management-system-g7rv.onrender.com/api/v1/form/getForm');
         setForm(formData.data.data);
     })() // IIFE Call
 },[]);
