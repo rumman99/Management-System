@@ -1,5 +1,5 @@
 
-export default ({name, email, message}) =>{
+export default ({name, email, phone, message}) =>{
     const today = new Date();
 
     return `
@@ -121,6 +121,9 @@ export default ({name, email, message}) =>{
             </tr>
             <tr class="item">
                 <td>Email: ${email}</td>
+            </tr>
+            <tr class="item">
+                <td>Email: ${phone}</td>
             </tr>
             <tr class="item">
                 <td>Messages: ${message}</td>

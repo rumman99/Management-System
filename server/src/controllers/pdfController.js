@@ -12,8 +12,8 @@ import { Form } from "../models/formModel.js";
 
 // Create Form //
 const createForm= asyncHandler(async(req, res)=>{
-    const {name, email, message} = req.body;
-    const formCreated = await Form.create({name, email, message});
+    const {name, email, phone, message} = req.body;
+    const formCreated = await Form.create({name, email, phone, message});
 
     if(formCreated){
         return res.status(201).json(new ApiResponse(200, formCreated, "Form Created Successfully"));
@@ -22,6 +22,19 @@ const createForm= asyncHandler(async(req, res)=>{
         throw new ApiError(500, "Something Went Wrong When Creating the Form!!!!")
     }
 });
+
+// Getting All Form Data //
+const gettingFormData= asyncHandler(async(req, res)=>{
+    const gettingForm = await Form.find({});
+
+    if(gettingForm){
+        return res.status(201).json(new ApiResponse(200, gettingForm, "Form Data Fetching Successfull"));
+    }
+    else{
+        throw new ApiError(500, "No Form Data!!!!")
+    }
+});
+
 
 // to generate PDF
 const createPdf = asyncHandler(async(req, res)=>{
@@ -51,4 +64,4 @@ const sendPdfToMail= asyncHandler(async(req, res)=>{
     }
 });
 
-export {createPdf, sendPdfToMail, createForm};
+export {createPdf, sendPdfToMail, createForm, gettingFormData};

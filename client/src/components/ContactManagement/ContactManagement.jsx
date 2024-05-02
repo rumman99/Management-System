@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LeftBar from '../Leftbar/LeftBar';
 import { AiFillMessage } from "react-icons/ai";
 import { MdOutlineForwardToInbox } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import axios from 'axios';
 
 
 const ContactManagement = () => {
+    const [form, setForm]= useState([]);
+// Fetching Form Data from Database //
+useEffect(()=>{
+    const fetching=(async()=>{
+        const formData= await axios.get('http://localhost:3333/api/v1/form/getForm');
+        setForm(formData.data.data);
+    })() // IIFE Call
+},[]);
+// console.log(form);
+
     return (
         <div className='flex'>
             <div>
@@ -15,7 +26,7 @@ const ContactManagement = () => {
             <div>
                 <div className='flex justify-between mt-4'>
                     <div className='ml-20'>
-                        <h1>Contact Management</h1>
+                        <h1 className='text-3xl text-blue-600 font-semibold'>Contact Management</h1>
                     </div>
                     <div>
                         <div>
@@ -28,9 +39,9 @@ const ContactManagement = () => {
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
+                            <tr className=''>
                                 <th scope="col" className="px-6 py-3">
-                                    name
+                                    Name
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Phone Number
@@ -44,72 +55,31 @@ const ContactManagement = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Apple MacBook Pro 17"
-                                </th>
-                                <td className="px-6 py-4">
-                                    Silver
-                                </td>
-                                <td className="px-6 py-4">
-                                    Laptop
-                                </td>
-                                <td className="px-6 py-4">
-                                    <a href="#" className="flex font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                    <AiFillMessage className='text-2xl'/>
-                                    <MdOutlineForwardToInbox className='text-2xl mx-2'/>
-                                    <MdDelete className='text-2xl'/>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Microsoft Surface Pro
-                                </th>
-                                <td className="px-6 py-4">
-                                    White
-                                </td>
-                                <td className="px-6 py-4">
-                                    Laptop PC
-                                </td>
-                                <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </td>
-                            </tr>
-                            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
-                                <td className="px-6 py-4">
-                                    Black
-                                </td>
-                                <td className="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </td>
-                            </tr>
-                            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Google Pixel Phone
-                                </th>
-                                <td className="px-6 py-4">
-                                    Gray
-                                </td>
-                                <td className="px-6 py-4">
-                                    Phone
-                                </td>
-                                <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </td>
-                            </tr>
-                            <tr>
-                            </tr>
+                            {form.map((data, index) => (
+                                <tr key={index} className={`${index % 2 === 0 ? 'even:bg-gray-50 even:dark:bg-gray-800' : 'odd:bg-white odd:dark:bg-gray-900'} border-b dark:border-gray-700`}>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        {data.name}
+                                    </th>
+                                    <td className="px-6 py-4 text-gray-900">
+                                        {data.phone}
+                                    </td>
+                                    <td className="px-6 py-4 text-gray-900">
+                                        {data.email}
+                                    </td>
+                                    <td className="px-6 py-4 text-gray-900">
+                                        <a href="#" className="flex font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                            <AiFillMessage className='text-2xl'/>
+                                            <MdOutlineForwardToInbox className='text-2xl mx-2'/>
+                                            <MdDelete className='text-2xl'/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
                 </div>
+
             </div>
         </div>
     );

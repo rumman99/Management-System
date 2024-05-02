@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createForm, createPdf, sendPdfToMail } from "../controllers/pdfController.js";
+import { createForm, createPdf, gettingFormData, sendPdfToMail } from "../controllers/pdfController.js";
 
 
 
@@ -7,6 +7,8 @@ import { createForm, createPdf, sendPdfToMail } from "../controllers/pdfControll
 const router = Router();
 
 router.route('/createForm').post(createForm); // creating form entry in DB
+
+router.route('/getForm').get(gettingFormData); // Getting All Form Data
 
 router.route('/createPdf').post(createPdf); // to generate PDF
 
