@@ -11,7 +11,7 @@ exports.creatingPdf= async(req, res)=>{
 
     const createdPdf= pdf.create(htmlContent).toFile(filePath, (err) => {
         if(err){
-            throw new ApiError(500, "Something Wrong while creating the PDF!!!")
+            throw new Error("Something Wrong while creating the PDF!!!")
         }
         return res
         .status(200)
