@@ -12,7 +12,7 @@ app.use(express.json());
 // All Routes //
 import pdfRoute from './routes/pdfRoute.js';
 
-app.use('/api/v1/form',cors(), pdfRoute);
+app.use('/api/v1/form', pdfRoute);
 
 
 export default app;

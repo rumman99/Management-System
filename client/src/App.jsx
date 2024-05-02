@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import ContactUs from './pages/ContactUs/ContactUs'
-import Dashboard from './pages/ContactUs/Dashboard/Dashboard'
 import ContactManagement from './components/ContactManagement/ContactManagement'
 
 function App() {

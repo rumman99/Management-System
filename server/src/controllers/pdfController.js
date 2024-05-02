@@ -13,13 +13,18 @@ import { Form } from "../models/formModel.js";
 // Create Form //
 const createForm= asyncHandler(async(req, res)=>{
     const {name, email, phone, message} = req.body;
-    const formCreated = await Form.create({name, email, phone, message});
-
-    if(formCreated){
-        return res.status(201).json(new ApiResponse(200, formCreated, "Form Created Successfully"));
-    }
-    else{
-        throw new ApiError(500, "Something Went Wrong When Creating the Form!!!!")
+    try {
+        const formCreated = await Form.create({name, email, phone, message});
+    
+        if(formCreated){
+            return res.status(201).json(new ApiResponse(200, formCreated, "Form Created Successfully"));
+        }
+        else{
+            throw new ApiError(500, "Something Went Wrong When Creating the Form!!!!")
+        }
+    } 
+    catch (error) {
+        console.log(error)
     }
 });
 
