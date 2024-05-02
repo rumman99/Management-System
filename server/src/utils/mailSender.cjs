@@ -1,12 +1,30 @@
 const path = require('path')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
+const pdfTemplate = require('../pdfTemplate/pdfTemplate.cjs')
+const pdf = require('html-pdf');
 
+// Creating PDF //
+exports.creatingPdf= async(req, res)=>{
+    const htmlContent = pdfTemplate(req.body);
+    const filePath = path.resolve(__dirname, 'public', 'temp', 'form.pdf');
+
+    const createdPdf= pdf.create(htmlContent).toFile(filePath, (err) => {
+        if(err){
+            throw new ApiError(500, "Something Wrong while creating the PDF!!!")
+        }
+        return res
+        .status(200)
+        .json({message:"PDF Generated Successfully"})
+    })
+
+    return createdPdf;
+}
 
 // Sending Mail to email //
 exports.mailSender =async()=>{
     try {
-        const parentDir = path.resolve(__dirname, '../../public/temp');
+        const parentDir = path.resolve(__dirname, 'public', 'temp');
         const pathToAttachment = path.join(parentDir, 'form.pdf');
         const attachment = fs.readFileSync(pathToAttachment).toString('base64');
     
@@ -39,6 +57,7 @@ exports.mailSender =async()=>{
         })
 
         fs.unlinkSync(pathToAttachment); //Remove local save temporary file after upload//
+
     } 
     catch (error) {
         throw new Error(error.message);

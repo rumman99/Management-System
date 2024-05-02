@@ -1,5 +1,5 @@
 
-export default ({name, email, phone, message}) =>{
+module.exports= ({name, email, phone, message}) =>{
     const today = new Date();
 
     return `

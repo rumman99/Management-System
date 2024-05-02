@@ -1,9 +1,7 @@
 import { asyncHandler } from "../utils/AsyncHandler.js";
-import pdf from "html-pdf";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import pdfTemplate from "../pdfTemplate/pdfTemplate.js"
-import { mailSender } from "../utils/mailSender.cjs";
+import { creatingPdf, mailSender } from "../utils/mailSender.cjs";
 import Form from "../models/formModel.js"
 
 
@@ -40,16 +38,9 @@ const gettingFormData= asyncHandler(async(req, res)=>{
 
 // to generate PDF
 const createPdf = asyncHandler(async(req, res)=>{
-    const htmlContent = pdfTemplate(req.body);
-
-    pdf.create(htmlContent).toFile('./public/temp/form.pdf', (err) => {
-        if(err){
-            throw new ApiError(500, "Something Wrong while creating the PDF!!!")
-        }
-        return res
-        .status(200)
-        .json(new ApiResponse(200, "PDF Generated Successfully"))
-    })
+    
+    await creatingPdf(req, res);
+    
 });
 
 // send PDF to email
