@@ -1,12 +1,17 @@
 Live Site: https://management-system-alpha.vercel.app
+</br>
 Api Server: https://management-system-g7rv.onrender.com/
+</br>
 
 Api End Point:
 POST create form in MongoDb=> https://management-system-g7rv.onrender.com/api/v1/form/createForm
 </br>
 POST Create Pdf from User Details=> https://management-system-g7rv.onrender.com/api/v1/form/createPdf
+</br>
 POST Sending Pdf To Email(test@nusaiba.com.bd)=> https://management-system-g7rv.onrender.com/api/v1/form/sendPdfToMail
+</br>
 GET Getting All Form Data=> https://management-system-g7rv.onrender.com/api/v1/form/getForm
+</br>
 
 Fully Functional React Management System Contact Us form submit, saving data to backend and also sending mail to the provided mail(test@nusaiba.com.bd) using TailwindCss, fetching data with Axios, Backend with NodeJs, ExpressJs, MongoDB with Mongoose ODM, html-pdf used for creating HTML to PDF, nodemailer used for sending main in gmail with user entry data instant and also saving in MongoDB Database. Also Pdf removed from backend server after sending email for secure file size in server :)
                                 
