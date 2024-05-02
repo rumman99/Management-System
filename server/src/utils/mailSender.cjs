@@ -1,6 +1,12 @@
 const path = require('path')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+app.use(cors());
 
 // Sending Mail to email //
 exports.mailSender =async()=>{

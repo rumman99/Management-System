@@ -10,7 +10,7 @@ router.route('/createForm').post(createForm); // creating form entry in DB
 
 router.route('/getForm').get(gettingFormData); // Getting All Form Data
 
-router.route('/createPdf').post(createPdf); // to generate PDF
+router.route('/createPdf').post(cors(), createPdf); // to generate PDF
 
 router.route('/sendPdfToMail').post(sendPdfToMail); // Send PDF to Emails
 
