@@ -4,7 +4,12 @@ import cors from 'cors';
 
 const app= express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://management-system-alpha.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // Enable CORS with credentials
+}));
 
 app.use(express.urlencoded({ extended: true }));
 
