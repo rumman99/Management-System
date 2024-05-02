@@ -1,12 +1,7 @@
 const path = require('path')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
-const express = require('express');
-const cors = require('cors');
 
-const app = express();
-
-app.use(cors());
 
 // Sending Mail to email //
 exports.mailSender =async()=>{
@@ -43,7 +38,7 @@ exports.mailSender =async()=>{
             ]
         })
 
-        // fs.unlinkSync(pathToAttachment); //Remove local save temporary file after upload//
+        fs.unlinkSync(pathToAttachment); //Remove local save temporary file after upload//
     } 
     catch (error) {
         throw new Error(error.message);

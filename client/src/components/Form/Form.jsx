@@ -20,9 +20,9 @@ const Form = () => {
             // Creating PDF Api call
             await axios.post('https://management-system-g7rv.onrender.com/api/v1/form/createPdf', data);
             // Sending PDF to mail
-            const sendPdfResponse = await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/sendPdfToMail");
+            // const sendPdfResponse = await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/sendPdfToMail");
 
-            alert(sendPdfResponse.data);
+            // alert(sendPdfResponse.data);
         } catch (error) {
             console.error('An error occurred:', error);
             alert('An error occurred while submitting the form. Please try again later.');

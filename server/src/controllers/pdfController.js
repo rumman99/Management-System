@@ -57,7 +57,7 @@ const sendPdfToMail= asyncHandler(async(req, res)=>{
     // Sending Mail Through NodeMailer
     try {
         // Calling sendMail function //
-        mailSender()
+        // await mailSender();
 
         res.send("Mail has been sent to your email. Check your mail");
 
