@@ -15,7 +15,7 @@ const Form = () => {
         e.preventDefault();
 
         try {
-            await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/createForm", data);
+            await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/createForm", data, {withCredentials: true});
 
             // Creating PDF Api call
             await axios.post('https://management-system-g7rv.onrender.com/api/v1/form/createPdf', data, {withCredentials: true});
