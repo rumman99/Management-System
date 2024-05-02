@@ -16,11 +16,11 @@ const Form = () => {
 
         try {
             // Creating PDF Api call
-            await axios.post('http://localhost:3333/api/v1/form/createPdf', data);
+            await axios.post('https://management-system-g7rv.onrender.com/api/v1/form/createPdf', data);
             // Sending PDF to mail
-            const sendPdfResponse = await axios.post("http://localhost:3333/api/v1/form/sendPdfToMail");
+            const sendPdfResponse = await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/sendPdfToMail");
 
-            await axios.post("http://localhost:3333/api/v1/form/createForm", data);
+            await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/createForm", data);
             
             console.log(sendPdfResponse);
             alert(sendPdfResponse.data);
