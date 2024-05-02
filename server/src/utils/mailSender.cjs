@@ -16,8 +16,8 @@ exports.mailSender =async()=>{
             port: 587,
             secure: false,
             auth: {
-                user: "tasnimrumman@gmail.com",
-                pass: "ybuuaxjsdliftfit"
+                user: process.env.NODEMAILER_USER,
+                pass: process.env.NODEMAILER_PASS
             }
         })
     

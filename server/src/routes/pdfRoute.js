@@ -6,7 +6,7 @@ import { createForm, createPdf, gettingFormData, sendPdfToMail } from "../contro
 
 const router = Router();
 
-router.route('/createForm').post(createForm); // creating form entry in DB
+// router.route('/createForm').post(createForm); // creating form entry in DB
 
 router.route('/getForm').get(gettingFormData); // Getting All Form Data
 
