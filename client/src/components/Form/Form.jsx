@@ -15,12 +15,12 @@ const Form = () => {
         e.preventDefault();
 
         try {
+            await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/createForm", data);
+
             // Creating PDF Api call
             await axios.post('https://management-system-g7rv.onrender.com/api/v1/form/createPdf', data);
             // Sending PDF to mail
             const sendPdfResponse = await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/sendPdfToMail");
-
-            await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/createForm", data);
             
             console.log(sendPdfResponse);
             alert(sendPdfResponse.data);
