@@ -5,6 +5,7 @@ import cors from 'cors';
 const app= express();
 
 app.use(cors({
+    origin: 'https://management-system-alpha.vercel.app',
     credentials: true
 }));
 
