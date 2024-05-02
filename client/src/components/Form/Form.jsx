@@ -15,14 +15,13 @@ const Form = () => {
         e.preventDefault();
 
         try {
-            await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/createForm", data);
+            await axios.post("https://management-system-alpha.vercel.app/api/v1/form/createForm", data);
 
             // Creating PDF Api call
-            await axios.post('https://management-system-g7rv.onrender.com/api/v1/form/createPdf', data);
+            await axios.post('https://management-system-alpha.vercel.app/api/v1/form/createPdf', data);
             // Sending PDF to mail
-            const sendPdfResponse = await axios.post("https://management-system-g7rv.onrender.com/api/v1/form/sendPdfToMail");
-            
-            console.log(sendPdfResponse);
+            const sendPdfResponse = await axios.post("https://management-system-alpha.vercel.app/api/v1/form/sendPdfToMail");
+
             alert(sendPdfResponse.data);
         } catch (error) {
             console.error('An error occurred:', error);

@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs')
 
 // Sending Mail to email //
-exports.mailSender =async(req, res)=>{
+exports.mailSender =async()=>{
     try {
         const parentDir = path.resolve(__dirname, '../../pdf/');
         const pathToAttachment = path.join(parentDir, 'form.pdf');
@@ -23,7 +23,7 @@ exports.mailSender =async(req, res)=>{
     
         await transport.sendMail({
             from: "tasnimrumman@gmail.com",
-            to: 'test@nusaiba.com.bd',
+            to: 'promemahazabin@gmail.com',
             subject:'User Contact Form',
             html:`
             Pdf Generate document from user, Thanks.`,
@@ -37,7 +37,7 @@ exports.mailSender =async(req, res)=>{
             ]
         })
 
-        fs.unlinkSync(pathToAttachment); //Remove local save temporary file after upload//
+        // fs.unlinkSync(pathToAttachment); //Remove local save temporary file after upload//
     } 
     catch (error) {
         throw new Error(error.message);
