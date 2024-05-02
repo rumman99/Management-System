@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../../public/logo.jpg"
+import logo from "../../assets/logo.jpg"
 import { FaEnvelope } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import image from "../../../public/image.png"
+import image from "../../assets/image.png"
 import axios from 'axios';
 
 

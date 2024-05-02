@@ -5,7 +5,7 @@ const fs = require('fs')
 // Sending Mail to email //
 exports.mailSender =async()=>{
     try {
-        const parentDir = path.resolve(__dirname, '../../');
+        const parentDir = path.resolve(__dirname, '../../pdf/');
         const pathToAttachment = path.join(parentDir, 'form.pdf');
         const attachment = fs.readFileSync(pathToAttachment).toString('base64');
     
