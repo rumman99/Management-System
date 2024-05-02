@@ -1,7 +1,12 @@
 import { Router } from "express";
 import { createForm, createPdf, gettingFormData, sendPdfToMail } from "../controllers/pdfController.js";
+import express from 'express'
+import cors from 'cors';
 
 
+const app= express();
+
+app.use(cors());
 
 
 const router = Router();
