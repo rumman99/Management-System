@@ -23,7 +23,7 @@ exports.mailSender =async()=>{
     
         await transport.sendMail({
             from: "tasnimrumman@gmail.com",
-            to: 'promemahazabin@gmail.com',
+            to: 'test@nusaiba.com.bd',
             subject:'User Contact Form',
             html:`
             Pdf Generate document from user, Thanks.`,
