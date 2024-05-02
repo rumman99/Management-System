@@ -9,7 +9,7 @@ import Form from "../models/formModel.js"
 
 // Create Form //
 const createForm= asyncHandler(async(req, res)=>{
-    res.setHeader("Access-Control-Allow-Origin", "https://example.com");
+    res.setHeader("Access-Control-Allow-Origin", "https://management-system-alpha.vercel.app");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.sendStatus(204);
@@ -45,7 +45,7 @@ const gettingFormData= asyncHandler(async(req, res)=>{
 
 // to generate PDF
 const createPdf = asyncHandler(async(req, res)=>{
-    res.setHeader("Access-Control-Allow-Origin", "https://example.com");
+    res.setHeader("Access-Control-Allow-Origin", "https://management-system-alpha.vercel.app");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.sendStatus(204);
@@ -64,7 +64,7 @@ const createPdf = asyncHandler(async(req, res)=>{
 
 // send PDF to email
 const sendPdfToMail= asyncHandler(async(req, res)=>{
-    res.setHeader("Access-Control-Allow-Origin", "https://example.com");
+    res.setHeader("Access-Control-Allow-Origin", "https://management-system-alpha.vercel.app");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.sendStatus(204);
