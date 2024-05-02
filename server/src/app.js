@@ -5,14 +5,10 @@ import cors from 'cors';
 const app= express();
 
 app.use(cors({
-    origin: 'https://management-system-alpha.vercel.app',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Enable CORS with credentials
+    credentials: true
 }));
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
 
 
@@ -21,5 +17,5 @@ import pdfRoute from './routes/pdfRoute.js';
 
 app.use('/api/v1/form', pdfRoute);
 
-
+SS
 export default app;
