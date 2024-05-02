@@ -4,11 +4,6 @@ const fs = require('fs')
 
 // Sending Mail to email //
 exports.mailSender =async(req, res)=>{
-    res.setHeader("Access-Control-Allow-Origin", "https://management-system-alpha.vercel.app");
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    res.sendStatus(204);
-
     try {
         const parentDir = path.resolve(__dirname, '../../pdf/');
         const pathToAttachment = path.join(parentDir, 'form.pdf');
