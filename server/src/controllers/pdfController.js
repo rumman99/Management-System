@@ -12,6 +12,11 @@ import { Form } from "../models/formModel.js";
 
 // Create Form //
 const createForm= asyncHandler(async(req, res)=>{
+    res.setHeader("Access-Control-Allow-Origin", "https://example.com");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.sendStatus(204);
+
     const {name, email, phone, message} = req.body;
     try {
         const formCreated = await Form.create({name, email, phone, message});
@@ -43,6 +48,11 @@ const gettingFormData= asyncHandler(async(req, res)=>{
 
 // to generate PDF
 const createPdf = asyncHandler(async(req, res)=>{
+    res.setHeader("Access-Control-Allow-Origin", "https://example.com");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.sendStatus(204);
+    
     const htmlContent = pdfTemplate(req.body);
 
     pdf.create(htmlContent).toFile('pdf/form.pdf', (err) => {
@@ -57,6 +67,11 @@ const createPdf = asyncHandler(async(req, res)=>{
 
 // send PDF to email
 const sendPdfToMail= asyncHandler(async(req, res)=>{
+    res.setHeader("Access-Control-Allow-Origin", "https://example.com");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.sendStatus(204);
+    
     // Sending Mail Through NodeMailer
     try {
         // Calling sendMail function //
