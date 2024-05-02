@@ -13,8 +13,8 @@ app.use(cors(
     credentials: true
     }
 ));
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("pdf"))
 app.use(express.json());
 
 
