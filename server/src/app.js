@@ -4,9 +4,7 @@ import cors from 'cors';
 
 const app= express();
 
-app.use(cors({
-    origin: 'https://management-system-alpha.vercel.app'
-}));
+app.use(cors());
 
 app.use(express.json());
 
@@ -14,7 +12,7 @@ app.use(express.json());
 // All Routes //
 import pdfRoute from './routes/pdfRoute.js';
 
-app.use('/api/v1/form', pdfRoute);
+app.use('/api/v1/form',cors(), pdfRoute);
 
 
 export default app;
