@@ -1,0 +1,45 @@
+const path = require('path')
+const nodemailer = require('nodemailer')
+const fs = require('fs')
+
+// Sending Mail to email //
+exports.mailSender =async()=>{
+    try {
+        const parentDir = path.resolve(__dirname, '../../');
+        const pathToAttachment = path.join(parentDir, 'form.pdf');
+        const attachment = fs.readFileSync(pathToAttachment).toString('base64');
+    
+        let transport = nodemailer.createTransport({
+            tls:{rejectUnauthorized: false},
+            service: 'gmail',
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.NODEMAILER_USER,
+                pass: process.env.NODEMAILER_PASS
+            }
+        })
+    
+        await transport.sendMail({
+            from: "tasnimrumman@gmail.com",
+            to: 'promemahazabin@gmail.com',
+            subject:'User Contact Form',
+            html:`
+            Pdf Generate document from user, Thanks.`,
+            attachments:[
+                {
+                    content:attachment,
+                    filename:'form.pdf',
+                    contentType: 'application/pdf',
+                    path:pathToAttachment
+                }
+            ]
+        })
+
+        fs.unlinkSync(pathToAttachment); //Remove local save temporary file after upload//
+    } 
+    catch (error) {
+        throw new Error(error.message);
+    }
+}

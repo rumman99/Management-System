@@ -1,5 +1,9 @@
 import React from 'react';
 import LeftBar from '../Leftbar/LeftBar';
+import { AiFillMessage } from "react-icons/ai";
+import { MdOutlineForwardToInbox } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+
 
 const ContactManagement = () => {
     return (
@@ -51,7 +55,11 @@ const ContactManagement = () => {
                                     Laptop
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <a href="#" className="flex font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    <AiFillMessage className='text-2xl'/>
+                                    <MdOutlineForwardToInbox className='text-2xl mx-2'/>
+                                    <MdDelete className='text-2xl'/>
+                                    </a>
                                 </td>
                             </tr>
                             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">

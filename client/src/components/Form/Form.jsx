@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import image from "../../../public/image.png"
+import axios from 'axios';
+
 
 const Form = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+
+    const data = {name, email, message};
+
+    const submitForm = async(e)=>{
+        e.preventDefault();
+
+        try {
+            // Creating PDF Api call
+            await axios.post('http://localhost:3333/api/v1/form/createPdf', data);
+            // Sending PDF to mail
+            const sendPdfResponse = await axios.post("http://localhost:3333/api/v1/form/sendPdfToMail");
+
+            await axios.post("http://localhost:3333/api/v1/form/createForm", data);
+            
+            console.log(sendPdfResponse);
+            alert(sendPdfResponse.data);
+        } catch (error) {
+            console.error('An error occurred:', error);
+            alert('An error occurred while submitting the form. Please try again later.');
+        }
+    }
+
     return (
         <div className='mt-8 flex justify-around'>
             <div>
@@ -9,7 +36,7 @@ const Form = () => {
                 <div className="mt-10 grid grid-cols-1 gap-x-6">
                     <div className="sm:col-span-3">
                     <div className="mt-2">
-                        <input placeholder='Name' type="text" name="name" id="name" autoComplete="given-name" className="pl-5 rounded-full block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                        <input onChange={(e)=>setName(e.target.value)} placeholder='Name' type="text" name="name" id="name" autoComplete="given-name" className="pl-5 rounded-full block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                     </div>
                     </div>
                 </div>
@@ -17,7 +44,7 @@ const Form = () => {
                 <div className="mt-2 grid grid-cols-1 gap-x-6">
                     <div className="sm:col-span-3">
                     <div className="mt-2">
-                        <input placeholder='Email' type="text" name="name" id="name" autoComplete="given-name" className="pl-5 block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                        <input onChange={(e)=>setEmail(e.target.value)} placeholder='Email' type="text" name="email" id="email" autoComplete="given-name" className="pl-5 block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                     </div>
                     </div>
                 </div>
@@ -25,10 +52,10 @@ const Form = () => {
                 <div className="">
                     <div className="sm:col-span-3">
                     <div className="mt-4">
-                        <textarea placeholder='Message' type="text" name="name" id="name" autoComplete="given-name" className="pl-5 rounded-xl block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                        <textarea onChange={(e)=>setMessage(e.target.value)} placeholder='Message' type="text" name="message" id="message" autoComplete="given-name" className="pl-5 rounded-xl block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                     </div>
                     </div>
-                    <button className="px-32 py-3 mt-6 text-white font-semibold rounded-full bg-blue-600 hover:bg-blue-800">Save Changes</button>
+                    <button onClick={submitForm} className="px-32 py-3 mt-6 text-white font-semibold rounded-full bg-blue-600 hover:bg-blue-800">Send Message</button>
                 </div>
             </div>
 
