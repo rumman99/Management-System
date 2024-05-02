@@ -1,13 +1,10 @@
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import pdf from "html-pdf";
-import path from "path";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import pdfTemplate from "../pdfTemplate/pdfTemplate.js"
-import nodemailer from "nodemailer"
-import fs from "fs"
 import { mailSender } from "../utils/mailSender.cjs";
-import { Form } from "../models/formModel.js";
+import Form from "../models/formModel.js"
 
 
 // Create Form //
